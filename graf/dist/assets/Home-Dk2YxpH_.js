@@ -1,0 +1,1 @@
+import{j as n}from"./index-B3v3lFe8.js";function e(){return n.jsx("main",{children:n.jsxs("div",{className:"container",children:[n.jsx("p",{children:"Илюшка"}),n.jsx("p",{children:"сервер json"}),n.jsx("p",{children:"пупупупупу"}),n.jsx("p",{children:"срок выполнения часов 8"})]})})}export{e as default};
