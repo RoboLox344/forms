@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const fs = require('fs');
+const path = require('path')
 const data = require('./data.json');
 
 
@@ -63,6 +64,14 @@ app.put('/api/job_postings/:id', (req, res) => {
     data.vacancies[index] = { ...updatedPosting, id: parseInt(id) };
     writeDataToFile(); // Сохраняем изменения в файл
     res.json(data.vacancies[index]);
+});
+
+// Настроим сервер на обслуживание статических файлов из папки build
+app.use(express.static(path.join(__dirname, 'graf', 'dist')));
+
+// Все остальные маршруты будут вести на индексный файл React-приложения
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'graf', 'dist', 'index.html'));
 });
 
 

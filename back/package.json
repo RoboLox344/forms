@@ -1,10 +1,10 @@
 {
   "scripts": {
     "start": "node app.js",
-    "client": "npm start --prefix client", 
-    "client-install": "npm install --prefix client", 
-    "client-build": "npm run build --prefix client", 
-    "heroku-postbuild": "npm run client-build"
+    "graf": "npm start --prefix client", 
+    "graf-install": "npm install --prefix client", 
+    "graf-build": "npm run build --prefix client", 
+    "dev": "concurrently \"npm start\" \"npm run graf\""
   },
   "dependencies": {
     "body-parser": "^1.20.3",
