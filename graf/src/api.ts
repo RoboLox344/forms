@@ -1,9 +1,17 @@
 import axios from "axios"
 
 
+const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:3333';
+
+const instance = axios.create({
+  baseURL: apiUrl,  // добавляем базовый URL
+});
+
+export default instance;
+
 export const getReqAll = async () => {
     try {
-        const res  = await axios.get('/api/req/all') 
+        const res  = await instance.get('/api/req/all') 
         return res.data
     } catch (error) {
         console.error('ошбика полчение карточкепцаигоцуатш0цута', error)
@@ -12,7 +20,7 @@ export const getReqAll = async () => {
 
 export const getReqByID = async (id:number) => {
     try {
-        const res = await axios.get(`/api/req/${id}`)
+        const res = await instance.get(`/api/req/${id}`)
         return res.data
     } catch (error) {
         console.error('err', error)
@@ -46,7 +54,7 @@ interface ReqData {
 
 export const createReq = async (data: ReqData) => {
     try {
-        const res = await axios.post('/api/job_postings', data);  
+        const res = await instance.post('/api/job_postings', data);  
         return res.data;
     } catch (error) {
         console.error('Ошибка при создании записи:', error);
@@ -56,7 +64,7 @@ export const createReq = async (data: ReqData) => {
 
 export const updateReq = async (id: number, data: ReqData) => {
     try {
-        const res = await axios.put(`/api/job_postings/${id}`, data);  
+        const res = await instance.put(`/api/job_postings/${id}`, data);  
         return res.data;
     } catch (error) {
         console.error('Ошибка при обновлении записи:', error);
