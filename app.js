@@ -67,11 +67,11 @@ app.put('/api/job_postings/:id', (req, res) => {
 });
 
 // Настроим сервер на обслуживание статических файлов из папки build
-app.use(express.static(path.join(__dirname, 'graf', 'dist')));
+const pathToDist = path.resolve(__dirname, 'graf', 'dist');
 
-// Все остальные маршруты будут вести на индексный файл React-приложения
+app.use(express.static(pathToDist));
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'graf', 'dist', 'index.html'));
+  res.sendFile(path.join(pathToDist, 'index.html'));
 });
 
 
