@@ -9,8 +9,8 @@ const data = require('./data.json');
 const app = express();
 
 
-app.use(cors()); // Для кросс-доменных запросов
-app.use(bodyParser.json()); // Для обработки JSON в теле запросов
+app.use(cors()); 
+app.use(bodyParser.json()); 
 
 let nextId = data.vacancies.length > 0 ? Math.max(...data.vacancies.map(posting => posting.id)) + 1 : 1;
 
